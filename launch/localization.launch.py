@@ -10,20 +10,29 @@ def generate_launch_description():
     slam_toolbox_demo_dir = get_package_share_directory('slam_toolbox_demo')
     turtlebot3_gazebo_dir = get_package_share_directory('turtlebot3_gazebo')
 
-    mapping_params = os.path.join(slam_toolbox_demo_dir, 'config', 'mapping.yaml')
+    localization_params = os.path.join(slam_toolbox_demo_dir, 'config', 'localization.yaml')
+    posegraph_path = os.path.join(slam_toolbox_demo_dir, 'posegraph', 'turtlebot3_world_posegraph')
 
+    # Launch turtlebot3_world simulation
     turtlebot3_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(turtlebot3_gazebo_dir, 'launch', 'turtlebot3_world.launch.py')
         )
     )
 
+    # SLAM Toolbox in localization mode
     slam_toolbox_node = Node(
         package='slam_toolbox',
-        executable='async_slam_toolbox_node',
+        executable='localization_slam_toolbox_node',
         name='slam_toolbox',
         output='screen',
-        parameters=[mapping_params, {'use_sim_time': True}],
+        parameters=[
+            localization_params,
+            {
+                'use_sim_time': True,
+                'map_file_name': posegraph_path,
+            }
+        ],
     )
 
     configure_event = TimerAction(
