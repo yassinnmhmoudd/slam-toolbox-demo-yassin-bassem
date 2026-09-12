@@ -154,7 +154,20 @@ Drive the robot around and confirm the map stays fixed in place — only the rob
 
 ## Screenshots and Demo
 
+**Mapping:**
+
 <img width="758" height="381" alt="Localization demo" src="https://github.com/user-attachments/assets/991eb50e-3f06-409d-9c55-ed4cf2742a71" />
+
+<img width="1365" height="588" alt="Screenshot 2026-09-12 001715" src="https://github.com/user-attachments/assets/7fd13593-a363-4915-8416-8d1eeed95818" />
+
+**Localization**:
+
+
+https://github.com/user-attachments/assets/04a3740b-864c-4a14-a4e7-7a282c1371a7
+
+
+
+
 
 
 
